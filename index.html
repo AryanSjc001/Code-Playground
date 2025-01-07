@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Code Playground</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="taskbar">
+        <h1>Code Playground</h1>
+        <div class="taskbar-buttons">
+            <button onclick="showPopup('instructions')">Instructions</button>
+            <button onclick="showPopup('about')">About</button>
+          
+        </div>
+    </div>
+    <div class="container">
+        <div class="editor-wrapper">
+            <div class="editor-container">
+                <div class="editor" id="html-editor">
+                    <h2>HTML</h2>
+                    <div class="editor-inner">
+                        <div class="line-numbers" id="html-line-numbers"></div>
+                        <textarea id="html-code" placeholder="Write your HTML here..."></textarea>
+                    </div>
+                </div>
+                <div class="editor" id="css-editor">
+                    <h2>CSS</h2>
+                    <div class="editor-inner">
+                        <div class="line-numbers" id="css-line-numbers"></div>
+                        <textarea id="css-code" placeholder="Write your CSS here..."></textarea>
+                    </div>
+                </div>
+                <div class="editor" id="js-editor">
+                    <h2>JavaScript</h2>
+                    <div class="editor-inner">
+                        <div class="line-numbers" id="js-line-numbers"></div>
+                        <textarea id="js-code" placeholder="Write your JavaScript here..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button onclick="runCode()">Run Code</button>
+        <div class="output-container">
+            <h2>Output</h2>
+            <iframe id="output-frame"></iframe>
+        </div>
+    </div>
+
+    <!-- Popup Menu -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">×</span>
+            <h2 id="popup-title"></h2>
+            <div id="popup-body"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
