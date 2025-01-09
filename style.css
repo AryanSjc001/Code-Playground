@@ -1,4 +1,3 @@
-/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -89,8 +88,8 @@ body {
     user-select: none;
     width: 40px;
     overflow: hidden;
-    overflow-y: hidden; /* Enables smooth scrolling */
-    border-right: 2px solid #27ae60; /* Visual separation */
+    overflow-y: hidden;
+    border-right: 2px solid #27ae60;
 }
 
 textarea {
@@ -103,7 +102,7 @@ textarea {
     font-family: monospace;
     font-size: 14px;
     outline: none;
-    overflow: scroll; /* Enable scroll */
+    overflow: scroll;
 }
 
 textarea:focus {
@@ -125,7 +124,6 @@ button:hover {
     background-color: #2ecc71;
 }
 
-/* Output Container */
 .output-container {
     background-color: white;
     border-radius: 10px;
@@ -151,7 +149,6 @@ iframe {
     background-color: #f9f9f9;
 }
 
-/* Popup Styles */
 .popup {
     display: none;
     position: fixed;
