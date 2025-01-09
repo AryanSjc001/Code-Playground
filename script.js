@@ -1,4 +1,3 @@
-// Predefined programs for the "Codes" popup
 const programs = {
   "Flappy Bird": `
 <html>
@@ -14,11 +13,9 @@ let bird;
 let gameLoop;
 let gravity = 1;
 let velocity = 0;
-
 document.addEventListener('keydown', function () {
   velocity = -10;
 });
-
 window.onload = function () {
   bird = document.getElementById('bird');
   gameLoop = setInterval(function () {
@@ -32,7 +29,6 @@ window.onload = function () {
 <div id="bird" style="position: absolute; top: 100px; left: 50px; width: 50px; height: 50px; background: yellow; border-radius: 50%;"></div>
 </body>
 </html>`,
-
   "Tic Tac Toe": `
 <html>
 <head>
@@ -52,7 +48,6 @@ td {
 <script>
 let currentPlayer = 'X';
 let gameOver = false;
-
 function play(cell) {
   if (cell.innerText === '' && !gameOver) {
     cell.innerText = currentPlayer;
@@ -81,7 +76,6 @@ function play(cell) {
 </table>
 </body>
 </html>`,
-
   "Rise Up": `
 <html>
 <head>
@@ -109,29 +103,23 @@ window.onload = function () {
 </html>`
 };
 
-// Function to run the entered code
 function runCode() {
   const htmlEditor = document.getElementById("html-code");
   const cssEditor = document.getElementById("css-code");
   const jsEditor = document.getElementById("js-code");
-
   const htmlCode = htmlEditor.value;
   const cssCode = `<style>${cssEditor.value}</style>`;
   const jsCode = `<script>${jsEditor.value}<\/script>`;
-
   const outputFrame = document.getElementById("output-frame");
-
   outputFrame.contentDocument.open();
   outputFrame.contentDocument.write(htmlCode + cssCode + jsCode);
   outputFrame.contentDocument.close();
 }
 
-// Function to show a popup
 function showPopup(type) {
   const popup = document.getElementById('popup');
   const popupTitle = document.getElementById('popup-title');
   const popupBody = document.getElementById('popup-body');
-
   if (type === "codes") {
       popupTitle.innerText = "Codes";
       popupBody.innerHTML = Object.keys(programs).map(function (program) {
@@ -144,14 +132,12 @@ function showPopup(type) {
       popupTitle.innerText = "About";
       popupBody.innerText = "Welcome to Code Playground! This tool helps you learn and test your coding skills in HTML, CSS, and JavaScript.";
   }
-
   popup.style.display = 'block';
   setTimeout(function () {
       popup.classList.add('show');
   }, 10);
 }
 
-// Function to close the popup
 function closePopup() {
   const popup = document.getElementById('popup');
   popup.classList.remove('show');
@@ -160,24 +146,20 @@ function closePopup() {
   }, 300);
 }
 
-// Function to load a predefined program
 function loadProgram(program) {
   if (programs[program]) {
       const code = programs[program];
       const htmlEditor = document.getElementById("html-code");
       const cssEditor = document.getElementById("css-code");
       const jsEditor = document.getElementById("js-code");
-
       htmlEditor.value = code;
       cssEditor.value = "";
       jsEditor.value = "";
-
       runCode();
       closePopup();
   }
 }
 
-// Update line numbers for text areas
 function updateLineNumbers(editor, lineNumbersContainer) {
   const text = editor.value;
   const lines = text.split("\n");
@@ -187,28 +169,22 @@ function updateLineNumbers(editor, lineNumbersContainer) {
   lineNumbersContainer.innerHTML = lineNumbersHTML;
 }
 
-// Synchronize scrolling for line numbers
 function syncScroll(editor, lineNumbersContainer) {
   lineNumbersContainer.scrollTop = editor.scrollTop;
 }
 
-// Attach event listeners to editors
 function attachEditorListeners(editorId, lineNumbersId) {
   const editor = document.getElementById(editorId);
   const lineNumbersContainer = document.getElementById(lineNumbersId);
-
   editor.addEventListener("input", function () {
       updateLineNumbers(editor, lineNumbersContainer);
   });
-
   editor.addEventListener("scroll", function () {
       syncScroll(editor, lineNumbersContainer);
   });
-
   updateLineNumbers(editor, lineNumbersContainer);
 }
 
-// Initialize the editors
 document.addEventListener("DOMContentLoaded", function () {
   attachEditorListeners("html-code", "html-line-numbers");
   attachEditorListeners("css-code", "css-line-numbers");
